@@ -1,0 +1,8 @@
+#==================================#
+# Minions-Revamped By TheCrappiest #
+#         Addon: NameTag           #
+#==================================#
+
+Use_Permission: 'Minions.addon.nametag.use'
+
+Use_ColorCodes: 'Minions.addon.nametag.color'
