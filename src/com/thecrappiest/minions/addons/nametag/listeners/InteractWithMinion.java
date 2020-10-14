@@ -1,7 +1,6 @@
 package com.thecrappiest.minions.addons.nametag.listeners;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -14,6 +13,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.thecrappiest.minions.addons.nametag.NametagAddon;
 import com.thecrappiest.minions.addons.nametag.configurations.AddonConfiguration;
 import com.thecrappiest.minions.events.InteractWithMinionEvent;
+import com.thecrappiest.minions.items.VersionMaterial;
 import com.thecrappiest.minions.messages.Messages;
 import com.thecrappiest.objects.Minion;
 
@@ -32,10 +32,10 @@ public class InteractWithMinion implements Listener {
 		ItemStack interactionItem = event.getInteractionItem();
 		
 		if(!minion.getOwner().equals(player.getUniqueId())) {return;}
-		if(interactionItem == null || (interactionItem != null && interactionItem.getType() == Material.AIR)) {return;}
-		if(interactionItem.getType() != Material.NAME_TAG) {return;}
+		if(interactionItem == null || (interactionItem != null && interactionItem.getType() == VersionMaterial.AIR.getMaterial())) {return;}
+		if(interactionItem.getType() != VersionMaterial.NAME_TAG.getMaterial()) {return;}
 		if(interactionItem.hasItemMeta() && !interactionItem.getItemMeta().hasDisplayName()) {return;}
-		if(interactionItem.getItemMeta().getDisplayName().equals(new ItemStack(Material.NAME_TAG).getItemMeta().getDisplayName())) {return;}
+		if(interactionItem.getItemMeta().getDisplayName().equals(VersionMaterial.NAME_TAG.getItemStack().getItemMeta().getDisplayName())) {return;}
 		
 		String displayName = interactionItem.getItemMeta().getDisplayName();
 		Entity entity = minion.getEntity();

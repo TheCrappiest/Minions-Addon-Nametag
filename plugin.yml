@@ -1,5 +1,10 @@
 name: Minions-Addons-Nametag
 main: com.thecrappiest.minions.addons.nametag.NametagAddon
-version: 0.0.1
+version: 0.0.2
 api-version: 1.16
 depend: [Minions-Revamped]
+
+# Update 0.0.2 for Minions-Addons-Nametag
+
+# Updated Minions-Revamped dependency.
+# Updated code to function on lower versions.

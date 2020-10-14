@@ -1,7 +1,6 @@
 package com.thecrappiest.minions.addons.nametag.listeners;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,6 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.thecrappiest.minions.addons.nametag.NametagAddon;
 import com.thecrappiest.minions.events.PickupMinionEvent;
+import com.thecrappiest.minions.items.VersionMaterial;
 import com.thecrappiest.minions.messages.Messages;
 import com.thecrappiest.objects.Minion;
 
@@ -28,7 +28,7 @@ public class PickupMinion implements Listener {
 		
 		if(!nametagAddon.nametagged.containsKey(minion)) {return;}
 		
-		ItemStack nametag = new ItemStack(Material.NAME_TAG);
+		ItemStack nametag = new ItemStack(VersionMaterial.NAME_TAG.getItemStack());
 		ItemMeta nametagMeta = nametag.getItemMeta();
 		
 		String displayName = nametagAddon.nametagged.get(minion);
