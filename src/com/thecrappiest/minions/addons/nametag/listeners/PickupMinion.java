@@ -9,9 +9,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.thecrappiest.minions.addons.nametag.NametagAddon;
 import com.thecrappiest.minions.events.PickupMinionEvent;
-import com.thecrappiest.minions.items.VersionMaterial;
 import com.thecrappiest.minions.messages.Messages;
 import com.thecrappiest.objects.Minion;
+import com.thecrappiest.versionclasses.VersionMaterial;
 
 public class PickupMinion implements Listener {
 

@@ -13,9 +13,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.thecrappiest.minions.addons.nametag.NametagAddon;
 import com.thecrappiest.minions.addons.nametag.configurations.AddonConfiguration;
 import com.thecrappiest.minions.events.InteractWithMinionEvent;
-import com.thecrappiest.minions.items.VersionMaterial;
 import com.thecrappiest.minions.messages.Messages;
 import com.thecrappiest.objects.Minion;
+import com.thecrappiest.versionclasses.VersionMaterial;
 
 public class InteractWithMinion implements Listener {
 
