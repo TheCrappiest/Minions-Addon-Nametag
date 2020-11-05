@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.thecrappiest.minions.addons.nametag.configurations.AddonConfiguration;
 import com.thecrappiest.minions.addons.nametag.listeners.CreateMinion;
 import com.thecrappiest.minions.addons.nametag.listeners.InteractWithMinion;
+import com.thecrappiest.minions.addons.nametag.listeners.MinionRespawn;
 import com.thecrappiest.minions.addons.nametag.listeners.PerformAction;
 import com.thecrappiest.minions.addons.nametag.listeners.PickupMinion;
 import com.thecrappiest.minions.addons.nametag.listeners.SaveMinion;
@@ -35,6 +36,7 @@ public class NametagAddon extends JavaPlugin {
 		new PickupMinion(this);
 		new SaveMinion(this);
 		new PerformAction(this);
+		new MinionRespawn(this);
 	}
 	
 	public void onDisable() {
