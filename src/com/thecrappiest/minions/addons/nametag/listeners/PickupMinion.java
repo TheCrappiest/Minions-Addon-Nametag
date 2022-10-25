@@ -21,29 +21,30 @@ public class PickupMinion implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, nametagAddon);
 	}
 	
+	Messages msgUtil = Messages.util();
+	
 	@EventHandler(ignoreCancelled=true)
 	public void onPickup(PickupMinionEvent event) {
 		Player player = event.getPlayer();
 		Minion minion = event.getMinion();
 		
-		if(!nametagAddon.nametagged.containsKey(minion)) {return;}
+		if(!nametagAddon.nametagged.containsKey(minion))
+			return;
 		
 		ItemStack nametag = new ItemStack(VersionMaterial.NAME_TAG.getItemStack());
 		ItemMeta nametagMeta = nametag.getItemMeta();
 		
 		String displayName = nametagAddon.nametagged.get(minion);
 		nametagMeta.setDisplayName(displayName);
-		if(nametagAddon.usesColor.contains(minion.getEntityID())) {
-			nametagMeta.setDisplayName(Messages.util().addColor(displayName));
-		}
+		if(nametagAddon.usesColor.contains(minion.getEntityID()))
+			nametagMeta.setDisplayName(msgUtil.addColor(displayName));
 		
 		nametag.setItemMeta(nametagMeta);
 		
-		if(player.getInventory().firstEmpty() == -1) {
+		if(player.getInventory().firstEmpty() == -1)
 			player.getWorld().dropItemNaturally(player.getLocation(), nametag);
-		}else {
+		else
 			player.getInventory().addItem(nametag);
-		}
 		
 		nametagAddon.nametagged.remove(minion);
 		nametagAddon.usesColor.remove(minion.getEntityID());

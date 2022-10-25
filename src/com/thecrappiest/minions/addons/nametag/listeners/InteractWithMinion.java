@@ -25,6 +25,8 @@ public class InteractWithMinion implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, nametagAddon);
 	}
 	
+	Messages msgUtil = Messages.util();
+	
 	@EventHandler(ignoreCancelled=true, priority=EventPriority.LOW)
 	public void onInteractWithMinion(InteractWithMinionEvent event) {
 		Player player = event.getPlayer();
@@ -43,11 +45,11 @@ public class InteractWithMinion implements Listener {
 		if(nametagAddon.nametagged.containsKey(minion)) {
 			String currentName = nametagAddon.nametagged.get(minion);
 			if(nametagAddon.usesColor.contains(minion.getEntityID())) {
-				currentName = Messages.util().addColor(nametagAddon.nametagged.get(minion));
+				currentName = msgUtil.addColor(nametagAddon.nametagged.get(minion));
 			}
 			
 			String currName = currentName;
-			if(Messages.util().removeColor(nametagAddon.nametagged.get(minion)).equals(Messages.util().removeColor(displayName))) {
+			if(msgUtil.removeColor(nametagAddon.nametagged.get(minion)).equals(msgUtil.removeColor(displayName))) {
 				Bukkit.getScheduler().runTaskLater(nametagAddon, () -> entity.setCustomName(currName), 3);
 				return;
 			}
@@ -58,13 +60,13 @@ public class InteractWithMinion implements Listener {
 		if(!player.hasPermission(yaml.getString("Use_Permission"))) {return;}
 		boolean useColor = player.hasPermission(yaml.getString("Use_ColorCodes"));
 		
-		nametagAddon.nametagged.put(minion, Messages.util().removeColor(displayName));
+		nametagAddon.nametagged.put(minion, msgUtil.removeColor(displayName));
 		
 		minion.getPlaceHolders();
 		
-		String nameWithPlaceholders = Messages.util().addPlaceHolders(displayName, minion.getPlaceHolders());
-		String withoutColor = Messages.util().removeColor(nameWithPlaceholders);
-		String withColor = Messages.util().addColor(nameWithPlaceholders);
+		String nameWithPlaceholders = msgUtil.addPlaceHolders(displayName, minion.getPlaceHolders());
+		String withoutColor = msgUtil.removeColor(nameWithPlaceholders);
+		String withColor = msgUtil.addColor(nameWithPlaceholders);
 		
 		event.setCancelled(true);
 		

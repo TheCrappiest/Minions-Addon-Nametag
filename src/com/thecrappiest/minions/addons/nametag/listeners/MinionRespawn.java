@@ -24,7 +24,8 @@ public class MinionRespawn implements Listener {
 		Entity initial = event.getInitialEntity();
 		ArmorStand as = (ArmorStand) minion.getEntity();
 		
-		if(!nametagAddon.nametagged.containsKey(minion)) {return;}
+		if(!nametagAddon.nametagged.containsKey(minion))
+			return;
 		
 		if(nametagAddon.usesColor.contains(initial.getUniqueId())) {
 			nametagAddon.usesColor.remove(initial.getUniqueId());

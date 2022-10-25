@@ -14,28 +14,29 @@ import com.thecrappiest.objects.Minion;
 public class PerformAction implements Listener {
 
 	public final NametagAddon nametagAddon;
+
 	public PerformAction(NametagAddon nametagAddon) {
 		this.nametagAddon = nametagAddon;
 		Bukkit.getPluginManager().registerEvents(this, nametagAddon);
 	}
-	
-	@EventHandler(ignoreCancelled=true, priority=EventPriority.HIGHEST)
+
+	Messages msgUtil = Messages.util();
+
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
 	public void onPerformTask(MinionPerformTaskEvent event) {
 		Minion minion = event.getMinion();
 		ArmorStand as = (ArmorStand) minion.getEntity();
-		
-		if(!nametagAddon.nametagged.containsKey(minion)) {return;}
-		
+
+		if (!nametagAddon.nametagged.containsKey(minion))
+			return;
+
 		String displayName = nametagAddon.nametagged.get(minion);
 		boolean usesColor = nametagAddon.usesColor.contains(minion.getEntityID());
-		
-		String nameWithPlaceholders = Messages.util().addPlaceHolders(displayName, minion.getPlaceHolders());
-		as.setCustomName(Messages.util().removeColor(nameWithPlaceholders));
-		
-		if(usesColor) {
-			as.setCustomName(Messages.util().addColor(nameWithPlaceholders));
-		}
+		String nameWithPlaceholders = msgUtil.addPlaceHolders(displayName, minion.getPlaceHolders());
+
+		as.setCustomName(
+				usesColor ? msgUtil.removeColor(nameWithPlaceholders) : msgUtil.addColor(nameWithPlaceholders));
 		as.setCustomNameVisible(true);
 	}
-	
+
 }
